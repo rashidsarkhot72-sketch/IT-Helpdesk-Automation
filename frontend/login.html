@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IT Helpdesk - Admin Login</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f7fb;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        background: white;
+        padding: 35px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .logo {
+        text-align: center;
+        font-size: 42px;
+        margin-bottom: 10px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #1f2937;
+        font-size: 25px;
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: #6b7280;
+        margin-bottom: 25px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 7px;
+        color: #374151;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 18px;
+        border: 1px solid #d1d5db;
+        border-radius: 7px;
+        font-size: 15px;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: #2563eb;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 7px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #1d4ed8;
+    }
+
+    .error {
+        color: #dc2626;
+        text-align: center;
+        margin-top: 15px;
+        display: none;
+    }
+
+    .footer {
+        text-align: center;
+        color: #9ca3af;
+        font-size: 13px;
+        margin-top: 25px;
+    }
+</style>
+</head>
+<body>
+<div class="login-container">
+
+    <div class="logo">🛠️</div>
+
+    <h1>IT Helpdesk</h1>
+
+    <p class="subtitle">Admin Panel Login</p>
+
+    <form id="loginForm">
+
+        <label for="username">Username</label>
+        <input
+            type="text"
+            id="username"
+            placeholder="Enter admin username"
+            required
+        >
+
+        <label for="password">Password</label>
+        <input
+            type="password"
+            id="password"
+            placeholder="Enter admin password"
+            required
+        >
+
+        <button type="submit">
+            🔐 Login
+        </button>
+
+        <p id="errorMessage" class="error">
+            Invalid username or password.
+        </p>
+
+    </form>
+
+    <div class="footer">
+        IT Helpdesk Ticket Automation System
+    </div>
+
+</div>
+
+<script>
+
+    const ADMIN_USERNAME = "admin";
+    const ADMIN_PASSWORD = "admin123";
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        if (
+            username === ADMIN_USERNAME &&
+            password === ADMIN_PASSWORD
+        ) {
+
+            sessionStorage.setItem("adminLoggedIn", "true");
+
+            window.location.href = "admin.html";
+
+        } else {
+
+            document.getElementById("errorMessage").style.display = "block";
+
+        }
+
+    });
+
+</script>
+</body>
+
+</html>
